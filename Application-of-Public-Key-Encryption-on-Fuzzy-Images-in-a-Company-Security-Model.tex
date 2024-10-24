@@ -26,7 +26,11 @@
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-Part 1:
+In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it \cite{Ellison2000}.
+
+An ideal approach is to use biometric data (e.g., fingerprints or iris patterns) \cite{Connaughton2007} as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
+
+To address this issue, this paper introduces the concept of fuzzy signatures \cite{Takahashi2015}, which use biometric data as a private key without requiring any assistance \cite{Dodis2008}. Thus, it applies public key cryptography with fuzzy images \cite{Son2016} in internal company security models utilizing biometrics.
 
 \section{Symbols and definitions}
 Part 2:
@@ -41,7 +45,11 @@ Part 4:
 Part 5:
 
 \section{Conclusion}
-Part 6:
+In the traditional method, messages encrypted using public key schemes rely on protecting the privacy of the user's private key by storing it in a physical device, such as a USB token carried by the user. However, it is not always practical for the user to keep the device with them at all times. To solve this problem, using individual biometric data as the private key is a reasonable alternative. 
+
+However, biometric data can change every time it is collected, making it unsuitable for direct use as a private key. In this paper, the concept of public key cryptography with fuzzy data is introduced, where a part of the biometric data can be used as the private key to decrypt ciphertexts without requiring any additional information. 
+
+Compared to traditional public key encryption, the primary advantage of fuzzy public key encryption is that it does not require the user to carry any memory device or password to function as a private key. When using fuzzy public key encryption, attention should be paid to the value of the fuzzy set in the neutral degree, as these unclear points in system access allow potential vulnerabilities where hackers could access the system.
 
 
 \section*{Acknowledgments}
