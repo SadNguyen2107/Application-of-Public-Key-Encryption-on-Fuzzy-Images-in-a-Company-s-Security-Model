@@ -364,23 +364,28 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
               CT = (svk, \, CT, \, \sigma).
           \]
 
-    \item \textbf{Decryption}: Takes the public parameters par, the public key $pk_f$, the fuzzy representation data of $x' \in X$, and the encoded message $CT$ as input. It parses $par = (par_{pke}, par_S)$, $pk_f = (pk, c)$, and $CT = (svk, CT, \sigma)$. If $\sigma$ is the signature on $CT$ with respect to the public key $svk$, it will run:
-          \[
-              sk' \leftarrow_R \kappa, \quad pk' \leftarrow \text{KeyGen'}(par_{pke}, sk'),
-          \]
-          and:
-          \[
-              c' \leftarrow S.\text{Sketch}(par_S, sk', x').
-          \]
-          The difference key $\Delta sk$ is obtained by:
-          \[
-              \Delta sk \leftarrow S.\text{DiffRec}(par_S, c, c').
-          \]
-          Finally, decryption proceeds as:
-          \[
-              M \leftarrow \text{Decoding}(par_{pke}, \Delta sk, CT, pk', sk'),
-          \]
-          and the output is the message \( M \).
+    \item \textbf{Extract fuzzy representation}: This step takes the user's biometric information as input. The output is the fuzzy representation data:
+        \[
+        \text{Gen}(\text{Bio}) = \left\{ \langle x', \mu_A(x'), \eta_A(x'), \nu_A(x') \rangle \mid x' \in X \right\}.
+        \]
+
+    \item \textbf{Decryption}: Takes the public parameters $par$, the public key $pk_f$, the fuzzy representation data of $x' \in X$, and the encoded message $CT$ as input. It parses $par = (par_{pke}, par_S)$, $pk_f = (pk, c)$, and $CT = (svk, CT, \sigma)$. If $\sigma$ is the signature on $CT$ with respect to the public key $svk$, it will run:
+    \[
+        sk' \leftarrow_R \kappa, \quad pk' \leftarrow \text{KeyGen'}(par_{pke}, sk'),
+    \]
+    and:
+    \[
+        c' \leftarrow S.\text{Sketch}(par_S, sk', x').
+    \]
+    The difference key $\Delta sk$ is obtained by:
+    \[
+        \Delta sk \leftarrow S.\text{DiffRec}(par_S, c, c').
+    \]
+    Finally, decryption proceeds as:
+    \[
+        M \leftarrow \text{Decoding}(par_{pke}, \Delta sk, CT, pk', sk'),
+    \]
+    and the output is the message $M$.
 \end{enumerate}
 % =================================================================
 
