@@ -16,7 +16,7 @@
                              % when including figure files
 \usepackage{multicol}        % used for the two-column index
 \usepackage[bottom]{footmisc}% places footnotes at page bottom
-
+\usepackage{seqsplit}
 \graphicspath{{Figure/}}
 
 % -----------------------------------------------------------------------------------
@@ -272,18 +272,16 @@ Example of the Encryption Algorithm:
     \item First, the algorithm will perform the extraction of the biometric information of the user that has been encoded into a vector $x = (5, 7, \dots, 1)$.
     \item Then, it will extract the information of the fuzzy public key $A = \langle 0.75, 0.1, 0.15 \rangle$.
     \item After that, choose $\lambda$ as a random number in the range $\{0, 2^{64} - 1\}$ as the input security parameter.
-    \item Execute the installation algorithm to obtain the output public parameter:
-          \[
-              par = \text{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM\ z''}.
-          \]
-    \item With $par$ and fuzzy public key data obtained above through the key generation algorithm, the output public key $pk_f = (pk, c)$ is:
-          \[
-              pk_f = (\text{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qe''}, \dots).
-          \]
-    \item Input the message to be encrypted $M = \text{``PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY''}$ into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext $CT$:
-          \[
-              CT = \text{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm''}.
-          \]
+    \item Execute the installation algorithm to obtain the output public parameter:\\
+    par = 
+    \seqsplit{"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM\ z"}
+ 
+
+    \item With $par$ and fuzzy public key data obtained above through the key generation algorithm, the output public key \\ $pk_f = (pk, c)$ =
+    \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qe bAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==,MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJNTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ).}
+
+    \item Input the message to be encrypted \\ $M = \text{``PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY''}$ into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext:\\ $CT$
+    =  \seqsplit{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm=''}.
 \end{enumerate}
 
 \subsection{Decryption Algorithm}
@@ -293,18 +291,12 @@ Example of the Decryption Algorithm:
     \item First, the algorithm will perform the extraction of the biometric information of the user that has been encoded into a vector $x' = (5, 6, \dots, 1)$.
     \item Then, it will extract the information of the fuzzy public key. The output will be the data of the fuzzy public key $A = \langle 0.74, 0.1, 0.15 \rangle$.
     \item With the input parameters, including the fuzzy public key, the public parameter:
-          \[
-              par = \text{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM z''},
-          \]
-          public key:
-          \[
-              pk_f = (\text{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEu mD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==,''}, \dots),
-          \]
-          and the code $CT = \text{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTL wm''}$.
+        \\par = \seqsplit{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM z''},
+        public key:
+       \\ $pk_f$ = \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEu mD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJ NTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ)},
+      \\ and the code\\ $CT$ = \seqsplit{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTL wm/T3KqI0qGs8HehzXHHw==''.}
     \item After the decryption algorithm, we obtain:
-          \[
-              M = \text{``PUBLIC KEY ENCRYPTION OF THE FUZZY PUBLIC KEY''}.
-          \]
+        M = ``PUBLIC KEY ENCRYPTION OF THE FUZZY PUBLIC KEY''.
 \end{enumerate}
 
 \subsection{Detailed Implementation of the Algorithm}
