@@ -34,6 +34,7 @@
 
 
 \usepackage{hyperref}
+% \usepackage{apacite}
 \usepackage{enumitem} 
 \usepackage[small,compact]{titlesec} 
 \titlespacing{\section}{0pt}{*4}{*1.5}
@@ -128,9 +129,23 @@
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an \allowbreak encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it \cite{Ellison2000}.
-An ideal approach is to use biometric data (e.g., fingerprints or iris patterns) \cite{Connaughton2007} as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
-To address this issue, this paper introduces the concept of fuzzy signatures \cite{Takahashi2015}, which use biometric data as a private key without requiring any assistance \cite{Dodis2008}. Thus, it applies public key cryptography with fuzzy images \cite{Son2016} in internal company security models utilizing biometrics.
+In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an \allowbreak encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
+(Ellison, C., Schneier, B. 2000).
+%  \cite{Ellison2000}.
+An ideal approach is to use biometric data (e.g., fingerprints or iris patterns)
+(Connaughton, R., Bowyer, K.W., Flynn, P.J. 2007)
+% \cite{Connaughton2007}
+as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
+To address this issue, this paper introduces the concept of fuzzy signatures
+(Takahashi, K., Matsuda, T., Murakami, T., Hanaoka, G., Nishigaki 2015)
+% \cite{Takahashi2015}
+,which use biometric data as a private key without requiring any assistance
+(Dodis, Y., Ostrovsky, R., Reyzin, L., Smith, A.D. 2008)
+% \cite{Dodis2008}
+. Thus, it applies public key cryptography with fuzzy images
+(Son, LH, Viet, PV, \& Hai, PV 2016)
+% \cite{Son2016}
+in internal company security models utilizing biometrics.
 
 \section{Symbols and definitions}
 \begin{enumerate}[label=(\roman*), itemsep=1em]
@@ -262,8 +277,6 @@ A fuzzy public key cryptography scheme in fuzzy key setting \( \mathcal{F} \) is
 \end{equation*}
 This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1| \) and \( O_{\text{DEC}(.)} \) \allowbreak being the decryption guess, taking the public parameter \(  par \), the public key \( \text{pk}_f^* \), a \allowbreak fragment of the watermark data \( x^* \), and a fragment of the ciphertext \( \text{CT} \) as input, and \allowbreak outputting the message \( M \leftarrow \text{Decrypt}(par ,\, \text{pk}_f^*,\, x^*,\, \text{CT}) \).
 
-% BEGIN  ==================================================================================
-
 
 \section{Construct algorithm for fuzzy public key encryption}
 \subsection*{- Encryption Algorithm}
@@ -275,20 +288,20 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
 
 
 Example of the Encryption Algorithm:
-\begin{enumerate}
+\begin{enumerate}[itemsep=1em]
     \item First, the algorithm will perform the extraction of the biometric information of the user that has been encoded into a vector \( x = (5, 7, \dots, 1) \).
     \item Then, it will extract the information of the fuzzy public key \( A = \langle 0.75, 0.1, 0.15 \rangle \).
-    \item After that, choose \( \lambda \) as a random number in the range \( \{0, 2^{64} - 1\} \) as the input security parameter.
+    \item After that, choose \( \lambda \) as a random number in the range \( \{0, \, 2^{64} - 1\} \) as the input security parameter.
     \item Execute the installation algorithm to obtain the output public parameter:\\
-    par = 
-    \seqsplit{"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM\ z"}
- 
+          par =
+          \seqsplit{\textquotedblleft MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiMz\textquotedblright}
 
-    \item With \( par \) and fuzzy public key data obtained above through the key generation algorithm, the output public key \\ \( pk_f = (pk, c) \) =
-    \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qe bAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==,MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJNTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ).}
 
-    \item Input the message to be encrypted \\ $M = \text{``PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY''}$ into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext:\\ $CT$
-    =  \seqsplit{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm=''}.
+    \item With \( par \) and fuzzy public key data obtained above through the key generation algorithm, the output public key \\ \( pk_f = (pk, \, c) \) =
+          \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, \, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJNTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ).}
+
+    \item Input the message to be encrypted \\ \( M = \text{\textquotedblleft PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY\textquotedblright} \) into the algorithm. From the message to be encrypted and the key obtained above through the \allowbreak encryption algorithm, we obtain the ciphertext:\\ \( CT \)
+          =  \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm/T3KqI0qGs8HehzXHHw==\textquotedblright}.
 \end{enumerate}
 
 \subsection*{- Decryption Algorithm}
@@ -299,16 +312,16 @@ Example of the Encryption Algorithm:
 \end{figure}
 
 Example of the Decryption Algorithm:
-\begin{enumerate}
+\begin{enumerate}[itemsep=1em]
     \item First, the algorithm will perform the extraction of the biometric information of the user that has been encoded into a vector \( x' = (5,\, 6, \, \dots, \, 1) \).
     \item Then, it will extract the information of the fuzzy public key. The output will be the data of the fuzzy public key \( A = \langle 0.74,\, 0.1,\, 0.15 \rangle \).
     \item With the input parameters, including the fuzzy public key, the public parameter:
-        \\par = \seqsplit{``MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiM z''},
-        public key:
-       \\ $pk_f$ = \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEu mD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJ NTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ)},
-      \\ and the code\\ $CT$ = \seqsplit{``exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTL wm/T3KqI0qGs8HehzXHHw==''.}
+          \\[6pt] \( par \) = \seqsplit{\textquotedblleft MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiMz\textquotedblright},
+          public key:
+          \\[6pt] \( pk_f \) = \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEu mD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJ NTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ)},
+          \\[6pt] and the code\\ \( CT \) = \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTL wm/T3KqI0qGs8HehzXHHw==\textquotedblright.}
     \item After the decryption algorithm, we obtain:
-        M = ``PUBLIC KEY ENCRYPTION OF THE FUZZY PUBLIC KEY''.
+          \( M \) = \textquotedblleft PUBLIC KEY ENCRYPTION OF THE FUZZY PUBLIC KEY\textquotedblright.
 \end{enumerate}
 
 \subsection*{- Detailed Implementation of the Algorithm}
@@ -390,7 +403,6 @@ The decision key is the KeyGen algorithm that first randomly selects a key \( sk
 
 \subsection{Homomorphism}
 
-% TODO: FIX THIS !!!
 The public key encryption scheme is homomorphic if it satisfies the following conditions:
 \begin{itemize}
     \item For the public parameters \( par_{pke} \) generated by the setup algorithm, there is an abelian group \( (\kappa_{pke}, +) \) associated with the private key space \( \kappa_{pke} \).
@@ -401,7 +413,6 @@ The public key encryption scheme is homomorphic if it satisfies the following co
 
     \item There exists an algorithm that determines \( M_{en} \), taking the public parameters \( par_{pke} \), public key \( pk_{pke} \), ciphertext \( CT \), and shifted private key \( \Delta sk \in \kappa_{pke} \) as input, and outputs the shifted ciphertext message.
 \end{itemize}
-% =================================================================
 
 \section{Conclusion}
 In the traditional method, messages encrypted using public key schemes rely on protecting the privacy of the user's private key by storing it in a physical device, such as a USB token carried by the user. However, it is not always practical for the user to keep the device with them at all times. To solve this problem, using individual biometric data as the private key is a reasonable alternative.
