@@ -35,6 +35,10 @@
 
 \usepackage{hyperref}
 % \usepackage{apacite}
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+
 \usepackage{enumitem} 
 \usepackage[small,compact]{titlesec} 
 \titlespacing{\section}{0pt}{*4}{*1.5}
@@ -43,11 +47,6 @@
 \edef\restoreparindent{\parindent=\the\parindent\relax}
 \usepackage{parskip}
 \restoreparindent
-
-% % package content table
-% \usepackage{tocbasic}
-
-% \usepackage{blindtext}
 
 % % custom packages
 \usepackage{array}
@@ -129,22 +128,17 @@
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an \allowbreak encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
-(Ellison, C., Schneier, B. 2000).
-%  \cite{Ellison2000}.
+In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an \allowbreak encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important \allowbreak aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
+\parencite{Ellison2000}.
 An ideal approach is to use biometric data (e.g., fingerprints or iris patterns)
-(Connaughton, R., Bowyer, K.W., Flynn, P.J. 2007)
-% \cite{Connaughton2007}
-as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
+\parencite{Connaughton2007}
+as a private key since biometric data is unique to each individual, providing a \allowbreak convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
 To address this issue, this paper introduces the concept of fuzzy signatures
-(Takahashi, K., Matsuda, T., Murakami, T., Hanaoka, G., Nishigaki 2015)
-% \cite{Takahashi2015}
-,which use biometric data as a private key without requiring any assistance
-(Dodis, Y., Ostrovsky, R., Reyzin, L., Smith, A.D. 2008)
-% \cite{Dodis2008}
+\parencite{Takahashi2015}
+,which use \allowbreak biometric data as a private key without requiring any assistance
+\parencite{Dodis2008}
 . Thus, it applies public key cryptography with fuzzy images
-(Son, LH, Viet, PV, \& Hai, PV 2016)
-% \cite{Son2016}
+\parencite{Son2016}
 in internal company security models utilizing biometrics.
 
 \section{Symbols and definitions}
@@ -425,9 +419,5 @@ Compared to traditional public key encryption, the primary advantage of fuzzy pu
 Acknowledgments section
 
 
-% References
-\bibliographystyle{plain}
-\bibliography{references}
-
-
+\printbibliography
 \end{document}
