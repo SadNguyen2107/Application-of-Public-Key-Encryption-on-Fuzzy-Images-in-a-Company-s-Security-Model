@@ -28,6 +28,17 @@
 \usepackage{amsmath}
 % \usepackage{amssymb}         % for additional mathematical symbols
 \usepackage{amsfonts}        % for sets like \mathbb{N}, \mathbb{Z}, etc.
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{data} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \usepackage{bm}              % for bold symbols
 \usepackage{caption}         % for controlling figure/table captions
 \usepackage{float}           % to improve figure positioning
@@ -198,12 +209,51 @@ in internal company security models utilizing biometrics.
 \end{enumerate}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth, keepaspectratio]{Figure1.png} % Adjust the width or use \textwidth for relative size
-    \caption{Membership functions applied to high level of security of fuzzy sets of pictures}
-    \label{fig:membership-functions-security}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth, keepaspectratio]{Figure1.png} % Adjust the width or use \textwidth for relative size
+%     \caption{Membership functions applied to high level of security of fuzzy sets of pictures}
+%     \label{fig:membership-functions-security}
+% \end{figure}
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=12cm, % Scale the plot to desired width
+                height=5.5cm,
+                axis lines=middle,
+                xmin=0, xmax=10,
+                ymin=0, ymax=1.2,
+                xlabel={},      % Empty string to hide x-axis label
+                ylabel={},      % Empty string to hide y-axis label
+                xtick={0, 2, 4, 6, 8},
+                ytick={0, 0.2, 0.4, 0.6, 0.8, 1},
+                yticklabel style={/pgf/number format/.cd, fixed, precision=1},
+                domain=0:10,
+                samples=100,
+                smooth,
+                clip=false
+            ]
+
+            % Draw the sigmoid curve
+            \addplot[thick, domain=0.4:8] {1/(1 + exp(-1.21 * (x - 4.2)))};
+
+
+            % Dashed lines for the points a, b, c
+            \draw[dashed] (axis cs:4.2,0) -- (axis cs:4.2,0.5) -- (axis cs:0,0.5);
+            \draw[dashed] (axis cs:8,0) -- (axis cs:8,1) -- (axis cs:0,1);
+
+            % Labels for points a, b, c with adjusted positions
+            \node[below=15pt] at (axis cs:4.2,0) {\( b \)};
+            \node[below=15pt] at (axis cs:8,0) {\( c \)};
+            \node[below=15pt] at (axis cs:0.5,0) {\( a \)};
+            \node[left=2pt] at (axis cs:0,1.2) {1.2};
+            \node[below=2pt] at (axis cs:10,0) {10};
+
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
 
 \section{Famework and security model of public key cryptography of watermark}
 \subsection*{A. Framework of Public Key Cryptography for Watermark}
@@ -274,13 +324,31 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
 
 \section{Construct algorithm for fuzzy public key encryption}
 \subsection*{- Encryption Algorithm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth, keepaspectratio]{Encryption.png} % Adjust the width or use \textwidth for relative size
-    \caption{Encryption Algorithm}
-    \label{fig:encryption-algorithm}
-\end{figure}
+\begin{center}
+    \begin{tikzpicture}[node distance=2cm]
+        % Nodes
+        \node (start) [startstop] {Start};
+        \node (bio) [data, below of=start] {User biometric information};
+        \node (fuzzykey) [process, below of=bio] {Extraction of fuzzy public key};
+        \node (security) [data, below of=fuzzykey] {Security parameter \( \lambda \)};
+        \node (installation) [process, below of=security] {Installation};
+        \node (keygen) [process, below of=installation] {Key generation};
+        \node (message) [data, below of=keygen] {Message};
+        \node (encrypted) [process, below of=message] {Encrypted message};
+        \node (end) [startstop, below of=encrypted] {End};
 
+        % Arrows
+        \draw [arrow] (start) -- (bio);
+        \draw [arrow] (bio) -- (fuzzykey);
+        \draw [arrow] (fuzzykey) -- (security);
+        \draw [arrow] (security) -- (installation);
+        \draw [arrow] (installation) -- (keygen);
+        \draw [arrow] (keygen) -- (message);
+        \draw [arrow] (message) -- (encrypted);
+        \draw [arrow] (encrypted) -- (end);
+
+    \end{tikzpicture}
+\end{center}
 
 Example of the Encryption Algorithm:
 \begin{enumerate}[itemsep=1em]
@@ -299,13 +367,29 @@ Example of the Encryption Algorithm:
           =  \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm/T3KqI0qGs8HehzXHHw==\textquotedblright}.
 \end{enumerate}
 
-\subsection*{- Decryption Algorithm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.35\textwidth, keepaspectratio]{Decryption.png} % Adjust the width or use \textwidth for relative size
-    \caption{Decryption Algorithm}
-    \label{fig:decryption-algorithm}
-\end{figure}
+\begin{center}
+    \begin{tikzpicture}[node distance=2cm]
+        % Nodes
+        \node (start) [startstop] {Start};
+        \node (biometric) [data, below of=start] {User biometric information};
+        \node (fuzzykey) [process, below of=biometric] {Extraction of fuzzy public key};
+        \node (parameter) [data, below of=fuzzykey] {Public parameter};
+        \node (publickey) [data, below of=parameter] {Public key};
+        \node (message) [data, below of=publickey] {Encrypted Message};
+        \node (decryption) [process, below of=message] {Decryption};
+        \node (end) [startstop, below of=decryption] {End};
+
+        % Arrows
+        \draw [arrow] (start) -- (biometric);
+        \draw [arrow] (biometric) -- (fuzzykey);
+        \draw [arrow] (fuzzykey) -- (parameter);
+        \draw [arrow] (parameter) -- (publickey);
+        \draw [arrow] (publickey) -- (message);
+        \draw [arrow] (message) -- (decryption);
+        \draw [arrow] (decryption) -- (end);
+
+    \end{tikzpicture}
+\end{center}
 
 Example of the Decryption Algorithm:
 \begin{enumerate}[itemsep=1em]
