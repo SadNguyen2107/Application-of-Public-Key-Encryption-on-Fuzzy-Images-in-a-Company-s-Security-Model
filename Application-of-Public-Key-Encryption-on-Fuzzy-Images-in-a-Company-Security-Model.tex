@@ -216,7 +216,8 @@ in internal company security models utilizing biometrics.
 %     \label{fig:membership-functions-security}
 % \end{figure}
 
-\begin{center}
+\begin{figure}[h!]
+    \centering
     \begin{tikzpicture}
         \begin{axis}[
                 width=12cm, % Scale the plot to desired width
@@ -238,7 +239,6 @@ in internal company security models utilizing biometrics.
             % Draw the sigmoid curve
             \addplot[thick, domain=0.4:8] {1/(1 + exp(-1.21 * (x - 4.2)))};
 
-
             % Dashed lines for the points a, b, c
             \draw[dashed] (axis cs:4.2,0) -- (axis cs:4.2,0.5) -- (axis cs:0,0.5);
             \draw[dashed] (axis cs:8,0) -- (axis cs:8,1) -- (axis cs:0,1);
@@ -252,7 +252,9 @@ in internal company security models utilizing biometrics.
 
         \end{axis}
     \end{tikzpicture}
-\end{center}
+    \caption{Membership functions applied to high level of security of fuzzy sets of \allowbreak pictures}
+    \label{fig:membership_function_security_analysis}
+\end{figure}
 
 
 \section{Famework and security model of public key cryptography of watermark}
@@ -324,7 +326,8 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
 
 \section{Construct algorithm for fuzzy public key encryption}
 \subsection*{- Encryption Algorithm}
-\begin{center}
+\begin{figure}[h!]
+    \centering
     \begin{tikzpicture}[node distance=2cm]
         % Nodes
         \node (start) [startstop] {Start};
@@ -348,7 +351,9 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
         \draw [arrow] (encrypted) -- (end);
 
     \end{tikzpicture}
-\end{center}
+    \caption{Biometric encryption using picture fuzzy algorithm}
+    \label{fig:biometric_encryption_fuzzy}
+\end{figure}
 
 Example of the Encryption Algorithm:
 \begin{enumerate}[itemsep=1em]
@@ -367,7 +372,8 @@ Example of the Encryption Algorithm:
           =  \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm/T3KqI0qGs8HehzXHHw==\textquotedblright}.
 \end{enumerate}
 
-\begin{center}
+\begin{figure}[h!]
+    \centering
     \begin{tikzpicture}[node distance=2cm]
         % Nodes
         \node (start) [startstop] {Start};
@@ -389,7 +395,9 @@ Example of the Encryption Algorithm:
         \draw [arrow] (decryption) -- (end);
 
     \end{tikzpicture}
-\end{center}
+    \caption{Biometric decryption using picture fuzzy algorithm}
+    \label{fig:biometric_decryption_fuzzy}
+\end{figure}
 
 Example of the Decryption Algorithm:
 \begin{enumerate}[itemsep=1em]
