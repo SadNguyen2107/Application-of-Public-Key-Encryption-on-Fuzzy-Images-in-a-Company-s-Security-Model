@@ -43,6 +43,9 @@
 \usepackage{caption}         % for controlling figure/table captions
 \usepackage{float}           % to improve figure positioning
 
+\usepackage[none]{hyphenat} % Prevents hyphenation
+\sloppy % Allows LaTeX to be less strict about line breaking
+
 
 % \usepackage{hyperref}
 % \usepackage{apacite}
@@ -83,7 +86,7 @@
 \newcommand{\itemEq}[1]{%
         \begingroup%
         \setlength{\abovedisplayskip}{0pt}%
-        \setlength{\belowdisplayskip}{0pt}%
+        \setlength{\belowdisplaayskip}{0pt}%
         \parbox[c]{\linewidth}{\begin{flalign}#1&&\end{flalign}}%
         \endgroup}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
@@ -134,23 +137,65 @@
     traditional public key encryption models, where the private key is typically stored on
     devices (e.g., on USB drives), the picture fuzzy public key encryption model does not
     require any device to store the private key
-}\
+}
 
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an \allowbreak encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important \allowbreak aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
+In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
 \parencite{Ellison2000}.
 An ideal approach is to use biometric data (e.g., fingerprints or iris patterns)
 \parencite{Connaughton2007}
-as a private key since biometric data is unique to each individual, providing a \allowbreak convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
+as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
 To address this issue, this paper introduces the concept of fuzzy signatures
 \parencite{Takahashi2015}
-,which use \allowbreak biometric data as a private key without requiring any assistance
+,which use biometric data as a private key without requiring any assistance
 \parencite{Dodis2008}
 . Thus, it applies public key cryptography with fuzzy images
 \parencite{Son2016}
 in internal company security models utilizing biometrics.
+
+\section{Related Work}
+\subsection{The research of public-key cryptography}
+\citeauthor{diffie1976} (\citeyear{diffie1976}) proposed two kinds of contemporary developments in cryptography are examined, widening applications of teleprocessing have given rise to a need for new types of cryptographic systems, which minimize the need for secure key distribution channels and supply the equivalent of a written signature.
+\citeauthor{diffie1988} (\citeyear{diffie1988}) described the development of public-key cryptography and its  principles are elucidated, the discussion covers exponential key exchange, the trap-door knapsack public-key cryptosystem.
+\citeauthor{barnes2022} (\citeyear{barnes2022}) describes a scheme for  hybrid public key encryption (HPKE). This scheme provides a variant of public key encryption of arbitrary-sized plaintexts for a recipient public key.
+\citeauthor{elgamal1985} (\citeyear{elgamal1985}) addressed new signature scheme is proposed, together with an  implementation of the Diffie-Hellman key distribution scheme that achieves a public key cryptosystem.
+\citeauthor{cheon2015} (\citeyear{cheon2015}) introduced a method to reduce the degree of the exponentiation circuit at the cost of additional public keys to accelerate the homomorphic evaluation of the PKE decryption.
+\citeauthor{azam2021} (\citeyear{azam2021}) prove that their fast and secure public-key image encryption scheme has a computational complexity that is a polylogarithmic function of the size of the plain text.
+In other words, the computational complexity of our scheme is independent of the point generation over
+\citeauthor{zhang2021} (\citeyear{zhang2021}) described a data mixing method for encrypting a plaintext block using a block encryption algorithm (such as Elliptic Curve, RSA, etc.) having a block size smaller than that of the plaintext block.
+\citeauthor{wee2012} (\citeyear{wee2012}) presented efficient public-key encryption schemes resilient against linear related key attacks (RKA) under standard assumptions and in the standard model. They obtain encryption schemes based on hardness of factoring, BDDH and LWE that remain secure even against an adversary that may query the decryption oracle on linear shifts of the actual secret key.
+\citeauthor{hou2023} (\citeyear{hou2023}) introduced a new cryptographic primitive called public key encryption with public-verifiable decryption delegation (PKE-PV D 2), that enables the original decryptor to transmit the decryption key for a specific ciphertext to a designated recipient in a way that is both public-verifiable and privacy-preserving.
+\citeauthor{imam2022} (\citeyear{imam2022}) proposed scheme uses four random large prime numbers to generate public–private key pairs and applies XOR operation along with the more complex intermediate process in key-generation encryption and decryption phases to achieve higher algorithm complexity, which would require more time to break the proposed cipher and would make it extremely difficult for third-parties to attack, hence boosting security.
+
+\subsection{The research of biometrics as an security methods and its application in company}
+Biometrics such as fingerprints, handprints have been use since ancient times according to \citeauthor{gupta2008biometrics} (\citeyear{gupta2008biometrics}) and the author pointed out the use of biometrics for identity authentication and identification for enhancing security in organizations.
+In the research of \citeauthor{bidgoli2012introduction}(\citeyear{bidgoli2012introduction}) has introduced a six-step guide for company using biometrics as a security measure.
+\citeauthor{naganuma2020new} (\citeyear{naganuma2020new}) has published a study about using biometrics fuzzy signature as a secret key management based on Blockchain technology as an innovative system for decentralized payments in fields such as financial area.
+\citeauthor{chang2004biometrics} (\citeyear{chang2004biometrics}) proposed a biometrics-based cryptographic key generation framework to advoid the vulnerability to be dictionary attacked by using PINs and passwords.
+\citeauthor{sengel2020efficient} (\citeyear{sengel2020efficient}) pointed out that the security performance of substitution box using fingerprint patterns is an successful algorithm promising to be used in mobile devices.
+\citeauthor{dhir2019uidba} (\citeyear{dhir2019uidba}) proposed an architecture, which focus on fingerprint driven digital signing in order to replace existing business processes within Governments with transparent and accountable technology driven transactions.
+\citeauthor{jin2016biometric} (\citeyear{jin2016biometric}) propose an ECC-free key binding scheme along with cancellable transforms for minutiae-based fingerprint biometrics, the minutiae information is favorably protected by a strong non-invertible cancellable transform, which is crucial to prevent a number of security and privacy attacks.
+\citeauthor{song2007personalized} (\citeyear{song2007personalized}) addressed Fingerhashing approach which transforms fingerprint into a binary discretized representation called Fingerhash and aimed to clarify some of the practical and security problems when using fingerhash to secure biometric key for protecting digital contents, they study two existing directions of biometric‐based key generation approach based on the usability, security and accuracy aspects.
+\citeauthor{nivedetha2020ffbks} (\citeyear{nivedetha2020ffbks}) published  experimental results show that the proposed Fuzzy Fingerprint Biometric Key Based Security Schema achieves better performance compared with the existing system in terms of simulation time, energy consumption, delay and attack detection rate.
+\citeauthor{kaur2023biometric} (\citeyear{kaur2023biometric}) combines characteristics of both the fields: biometric and cryptosystem, where biometric provides authentication and cryptosystem imparts security called Biometric Cryptosystem (BCS), BCS is prone to various attacks and this study covers 30 such attacks, its countermeasures to thwart these attacks.
+\\[6pt]
+
+\subsection{The research of picture fuzzy public key encryption in security}
+\citeauthor{bellare2006relations} (\citeyear{bellare2006relations}) compare the relative strengths of popular notions of security for public key encryption schemes and consider the goals of privacy and non-malleability, each under chosen plaintext attack and two kinds of chosen ciphertext attack.
+\citeauthor{cramer1998practical} (\citeyear{cramer1998practical}) proposed a new public key cryptosystem is proposed and analyzed.
+The scheme is practical, and is provably secure against adaptive chosen ciphertext attack under standard intractability assumptions.
+\citeauthor{naor1990public} (\citeyear{naor1990public}) construct a public-key cryptosystem secure against chosen ciphertezt attacks, given a public-key cryptosystern secure against passive eavesdropping and a noninteractive zero-knowledge proof system in the shared string model.
+\citeauthor{fujisaki1999enhance} (\citeyear{fujisaki1999enhance}) presented a simple and efficient conversion from a semantically secure public-key encryption scheme against passive adversaries to a non-malleable (or semantically secure) public-key encryption scheme against adaptive chosenciphertext attacks (active adversaries) in the random oracle model.
+\citeauthor{okamoto1998new} (\citeyear{okamoto1998new}) published a paper address a novel public-key cryptosystem, which is practical, provably secure and has some other interesting properties.
+\citeauthor{blum1985efficient} (\citeyear{blum1985efficient}) introduced first probabilistic public-key encryption scheme which combines perfect secrecy with respect to polynomial time eavesdroppers and eficiecy, in order that enhance the security of the system.
+\citeauthor{canetti2003forward} (\citeyear{canetti2003forward}) presented the first constructions of a (non-interactive) forward-secure public-key encryption scheme, their construction achieves security against chosen plaintext attacks under the decisional bilinear Diffie-Hellman assumption in the standard model.
+It is practical, and all complexity parameters grow at most logarithmically with the total number of time periods.
+The scheme can also be extended to achieve security against chosen ciphertext attacks.
+\citeauthor{dolev1983security} (\citeyear{dolev1983security}) used public key encryption to provide secure network communication has received considerable attention.
+\citeauthor{agrawal2023public} (\citeyear{agrawal2023public}) introduce the notion of public key encryption with secure key leasing (PKE-SKL).
+\citeauthor{chen2016dual} (\citeyear{chen2016dual}) investigate the security of a well-known cryptographic primitive, namely, public key encryption with keyword search (PEKS) which is very useful in many applications of cloud storage and provide an efficient instantiation of the general framework from a Decision Diffie–Hellman-based LH-SPHF and show that it can achieve the strong security against inside the KGA.
 
 \section{Symbols and definitions}
 \begin{enumerate}[label=(\roman*), itemsep=1em]
@@ -158,10 +203,10 @@ in internal company security models utilizing biometrics.
     \item The notation \( x \leftarrow y \) denotes that \( y \) is assigned to \( x \). If \( S \) is a finite set, \( |S| \) represents its size, and \( x \leftarrow_{\mathbf{R}}   S \) means that \( x \) is chosen randomly from \( S \). If \( \varPhi \) is a distribution over some set, \( x \leftarrow_{\mathbf{R}} \varPhi \) denotes that \( x \) is chosen according to distribution \( \varPhi \). Let \( f: D \rightarrow R \) be a function and \( y \in R \) a value; \( \boldsymbol{ f^{-1}(y) } \) represents the set of pre-images of \( y \) under \( f \), i.e., \( \boldsymbol{ f^{-1}(y) := \{x \in D \mid f(x) = y\} } \). If \( x \) and \( y \) are bitstrings, then \( |x| \) denotes the bit length of \( x \), and \( (x || y) \) represents the concatenation of \( x \) and \( y \).
     \item A function \( f(.): \mathbb{N} \rightarrow [0, 1] \) is called negligible if for every positive polynomial \( p(.) \) and every sufficiently large \( \mathbf{\lambda} \) then \(  \mathbf{f(\lambda) < \dfrac{1}{p(\lambda)}} \).
     \item How to set the open key: \\
-          1 open key setting \( \mathbf{F} \) includes \( ((d, \, X), \, t, \, \mathbf{X}  ,\, \varPhi,\, \mathbf{\epsilon} ) \) with \( (d, \, X) \) being the \allowbreak spatial data with \( X \) being the space containing the values of the fuzzy set of the \allowbreak picture \( A \) and \( d :\mathbf{X^2} \to \mathbb{R} \) being the corresponding distance function. \( t \in \mathbb{R} \) is the \allowbreak threshold value determined by the security parameter \( \lambda \), \( \mathbf{X} \) is the \allowbreak distribution of the fuzzy data on \( X \), \( \varPhi \) is the error distribution and \( \mathbf{ \epsilon \in [0,1] } \) is an error \allowbreak parameter representing the false rejection rate. The False Acceptance Rate (FAR) and False Rejection Rate (FRR) are determined based on the threshold value \( t \).\\[6pt]
-          \textbf{Requirement}: \( \text{FAR} := \Pr[x,\, x' \leftarrow_{\mathbf{R}} {\mathbf{X}} : d(x,\, x') < t] \) is negligible in the \allowbreak security parameter  \( \lambda \). Also for all fuzzy data parts of \( x \in \mathbf{X} \), \( \text{FRR} := \Pr[e \leftarrow_{\mathbf{R}} \varPhi : \mathrm{d}(x, \, x + e) \geq t] \leq \epsilon \)
-    \item The definition of picture fuzzy set (PFS) is an extension of fuzzy set and \allowbreak intuitionistic fuzzy set. Picture fuzzy set is based on a complete model in \allowbreak situations where we have human opinions: yes, no, neutral. \\[6pt]
-          Given a background set \( X = \{x_1, x_2, \dots, x_n \} \), a picture fuzzy set \( A \) on \( X \) is \allowbreak defined by
+          1 open key setting \( \mathbf{F} \) includes \( ((d, \, X), \, t, \, \mathcal{X}  ,\, \varPhi,\, \mathbf{\epsilon} ) \) with \( (d, \, X) \) being the spatial data with \( X \) being the space containing the values of the fuzzy set of the picture \( A \) and \( d :\mathbf{X^2} \to \mathbb{R} \) being the corresponding distance function. \( t \in \mathbb{R} \) is the threshold value determined by the security parameter \( \lambda \), \( \mathcal{X} \) is the distribution of the fuzzy data on \( X \), \( \varPhi \) is the error distribution and \( \mathbf{ \epsilon \in [0,1] } \) is an error parameter representing the false rejection rate. The False Acceptance Rate (FAR) and False Rejection Rate (FRR) are determined based on the threshold value \( t \).\\[6pt]
+          \textbf{Requirement}: \( \text{FAR} := \Pr[x,\, x' \leftarrow_{\mathbf{R}} {\mathcal{X}} : d(x,\, x') < t] \) is negligible in the security parameter  \( \lambda \). Also for all fuzzy data parts of \( x \in \mathbf{X} \), \( \text{FRR} := \Pr[e \leftarrow_{\mathbf{R}} \varPhi : \mathrm{d}(x, \, x + e) \geq t] \leq \epsilon \)
+    \item The definition of picture fuzzy set (PFS) is an extension of fuzzy set and intuitionistic fuzzy set. Picture fuzzy set is based on a complete model in situations where we have human opinions: yes, no, neutral. \\[6pt]
+          Given a background set \( X = \{x_1, x_2, \dots, x_n \} \), a picture fuzzy set \( A \) on \( X \) is defined by
           \[
               A = \left\{ \langle x,\, \mu_A(x),\, \eta_A(x),\, \nu_A(x) \rangle \mid x \in X \right\}
           \]
@@ -209,14 +254,7 @@ in internal company security models utilizing biometrics.
 \end{enumerate}
 
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\textwidth, keepaspectratio]{Figure1.png} % Adjust the width or use \textwidth for relative size
-%     \caption{Membership functions applied to high level of security of fuzzy sets of pictures}
-%     \label{fig:membership-functions-security}
-% \end{figure}
-
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
@@ -252,10 +290,9 @@ in internal company security models utilizing biometrics.
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Membership functions applied to high level of security of fuzzy sets of \allowbreak pictures}
+    \caption{Membership functions applied to high level of security of fuzzy sets of pictures}
     \label{fig:membership_function_security_analysis}
 \end{figure}
-
 
 \section{Famework and security model of public key cryptography of watermark}
 \subsection*{A. Framework of Public Key Cryptography for Watermark}
@@ -271,7 +308,7 @@ The public key cryptography scheme consists of the following six algorithms: Key
 
     \item \textbf{Set} \( (1^\lambda) \to par  \): when entering the security parameter \( \lambda \), this algorithm will output the public parameter \(  par \), including the fuzzy key setting
           \[
-              F = ((d, \, X), \, t, \, X, \, \varPhi, \, \epsilon)
+              F = ((d, \, X), \, t, \, \mathcal{X}, \, \varPhi, \, \epsilon)
           \]
 
     \item \textbf{KeyGen} \( (par ,\, x) \to \text{pk}_f \): when entering the public parameter \(  par \) and the fuzzy picture data of \( x \in X \), this algorithm outputs the public key \( \text{pk}_f \).
@@ -288,7 +325,7 @@ The public key cryptography scheme consists of the following six algorithms: Key
 
 \end{itemize}
 
-We say that the public key encryption scheme of a fuzzy picture with the fuzzy key setting \( F \) is correct, meaning that for every security parameter \( \lambda \in \mathbb{N} \) with all fuzzy picture data of \( x, x' \in X \) such that \( \mathrm{d}(x, x') < t \), for all messages \( M \) in the \allowbreak message space, if:
+We say that the public key encryption scheme of a fuzzy picture with the fuzzy key setting \( F \) is correct, meaning that for every security parameter \( \lambda \in \mathbb{N} \) with all fuzzy picture data of \( x, x' \in X \) such that \( \mathrm{d}(x, x') < t \), for all messages \( M \) in the message space, if:
 \begin{align*}
     par         & \leftarrow \text{Set}(1^\lambda)                    \\[6pt]
     \text{pk}_f & \leftarrow \text{KeyGen}(par ,\, x)                 \\[6pt]
@@ -321,12 +358,12 @@ A fuzzy public key cryptography scheme in fuzzy key setting \( F \) is said to b
             b' \leftarrow \mathcal{A}^{O_{Dec(.)}}(par  , \, pk^*_f, \, M_0, \, M_1, \, \text{state}, \, CT^*)
         \end{array} \right. \right] - \frac{1}{2}
 \end{equation*}
-This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1| \) and \( O_{\text{DEC}(.)} \) \allowbreak being the decryption guess, taking the public parameter \(  par \), the public key \( \text{pk}_f^* \), a \allowbreak fragment of the watermark data \( x^* \), and a fragment of the ciphertext \( \text{CT} \) as input, and \allowbreak outputting the message \( M \leftarrow \text{Decrypt}(par ,\, \text{pk}_f^*,\, x^*,\, \text{CT}) \).
+This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1| \) and \( O_{\text{DEC}(.)} \) being the decryption guess, taking the public parameter \(  par \), the public key \( \text{pk}_f^* \), a fragment of the watermark data \( x^* \), and a fragment of the ciphertext \( \text{CT} \) as input, and outputting the message \( M \leftarrow \text{Decrypt}(par ,\, \text{pk}_f^*,\, x^*,\, \text{CT}) \).
 
 
 \section{Construct algorithm for fuzzy public key encryption}
 \subsection*{- Encryption Algorithm}
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[node distance=2cm]
         % Nodes
@@ -368,11 +405,11 @@ Example of the Encryption Algorithm:
     \item With \( par \) and fuzzy public key data obtained above through the key generation algorithm, the output public key \\ \( pk_f = (pk, \, c) \) =
           \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, \, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJNTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ).}
 
-    \item Input the message to be encrypted \\ \( M = \text{\textquotedblleft PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY\textquotedblright} \) into the algorithm. From the message to be encrypted and the key obtained above through the \allowbreak encryption algorithm, we obtain the ciphertext:\\ \( CT \)
+    \item Input the message to be encrypted \\ \( M = \text{\textquotedblleft PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY\textquotedblright} \) into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext:\\ \( CT \)
           =  \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm/T3KqI0qGs8HehzXHHw==\textquotedblright}.
 \end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[node distance=2cm]
         % Nodes
@@ -413,9 +450,9 @@ Example of the Decryption Algorithm:
 \end{enumerate}
 
 \subsection*{- Detailed Implementation of the Algorithm}
-Install the fuzzy key \( F = ((d, X), t, \mathcal{X}, \varPhi, \epsilon) \). The Public Fuzzy Public Key \allowbreak Encryption (PFPKE) includes extracting the fuzzy representation, installation, \allowbreak Keygen, key code, and decryption, ensuring IND-CCA security, with \( K \) being the space of private keys that determine the key characteristics and homomorphism.
+Install the fuzzy key \( F = ((d, X), t, \mathcal{X}, \varPhi, \epsilon) \). The Public Fuzzy Public Key Encryption (PFPKE) includes extracting the fuzzy representation, installation, Keygen, key code, and decryption, ensuring IND-CCA security, with \( K \) being the space of private keys that determine the key characteristics and homomorphism.
 
-Assume that \( S = (\text{S.Setup},\, \text{S.Sketch}, \text{S.DiffRec}) \) is the probabilistic algorithm for installing the fuzzy key \( F \), and \( \text{Sig} = (\text{Sig.KeyGen},\, \text{Sig.Sign},\, \text{Sig.Verify}) \) is the \allowbreak one-time signature algorithm.
+Assume that \( S = (\text{S.Setup},\, \text{S.Sketch}, \text{S.DiffRec}) \) is the probabilistic algorithm for installing the fuzzy key \( F \), and \( \text{Sig} = (\text{Sig.KeyGen},\, \text{Sig.Sign},\, \text{Sig.Verify}) \) is the one-time signature algorithm.
 
 The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linked to the installation of the fuzzy key \( F \), including the following steps:
 
@@ -425,7 +462,7 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
               \text{Gen(Bio)} = \left\{ \langle x,\, \mu_A(x),\, \eta_A(x),\, \nu_A(x) \rangle \mid x \in X \right\}.
           \]
 
-    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the \break installation of the fuzzy key \( F = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is \allowbreak obtained:
+    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the \break installation of the fuzzy key \( F = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is obtained:
           \[
               par_{pke} \leftarrow_R S.\text{Setup}(1^\lambda), \quad par_S \leftarrow_R S.\text{Setup}(\kappa, +).
           \]
@@ -443,7 +480,7 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
               pk_f = (pk,\, c)
           \]
 
-    \item \textbf{Encryption}: Takes the public parameters \(  par \), the public key \( pk_f \), and the \allowbreak message \( M \) as input. It parses \( par  = ( par_{pke}, par_S) \) and \( pk_f = (pk, \, c) \). The \allowbreak signature key generation algorithm is run:
+    \item \textbf{Encryption}: Takes the public parameters \(  par \), the public key \( pk_f \), and the message \( M \) as input. It parses \( par  = ( par_{pke}, \, par_S) \) and \( pk_f = (pk, \, c) \). The signature key generation algorithm is run:
           \[
               ssk \leftarrow \text{Sig.KeyGen}(),
           \]
@@ -484,7 +521,7 @@ For the public key encryption scheme used to construct the public key encoding o
 
 \subsection{Key Determination Scheme}
 
-The decision key is the KeyGen algorithm that first randomly selects a key \( sk_{pke} \) (from the secret key space) and calculates the corresponding public key \( pk_{pke} \) \allowbreak (determined by the secret key \( {sk}_{pke} \)) during the key generation process. Formally, a public-key cryptographic scheme is a Key Determination Scheme if the public \allowbreak parameter \( {par}_{pke} \) is generated by a specified set algorithm, specifying the private key space \( \kappa_{pke} \), and there exists a specified algorithm KeyGen' such that the \allowbreak algorithm to generate the key KeyGen can be defined as \( \text{KeyGen}(par_{pke}) \):
+The decision key is the KeyGen algorithm that first randomly selects a key \( sk_{pke} \) (from the secret key space) and calculates the corresponding public key \( pk_{pke} \) (determined by the secret key \( {sk}_{pke} \)) during the key generation process. Formally, a public-key cryptographic scheme is a Key Determination Scheme if the public parameter \( {par}_{pke} \) is generated by a specified set algorithm, specifying the private key space \( \kappa_{pke} \), and there exists a specified algorithm KeyGen' such that the algorithm to generate the key KeyGen can be defined as \( \text{KeyGen}(par_{pke}) \):
 \[
     sk_{pke} \leftarrow_R \kappa_{pke}; \quad pk_{pke} \leftarrow \text{KeyGen}'(par_{pke}, \, sk_{pke}); \quad \text{Return } (sk_{pke}, \, pk_{pke}).
 \]
@@ -505,7 +542,7 @@ The public key encryption scheme is homomorphic if it satisfies the following co
 \section{Conclusion}
 In the traditional method, messages encrypted using public key schemes rely on protecting the privacy of the user's private key by storing it in a physical device, such as a USB token carried by the user. However, it is not always practical for the user to keep the device with them at all times. To solve this problem, using individual biometric data as the private key is a reasonable alternative.
 
-However, biometric data can change every time it is collected, making it \allowbreak unsuitable for direct use as a private key. In this paper, the concept of public key cryptography with fuzzy data is introduced, where a part of the biometric data can be used as the private key to decrypt ciphertexts without requiring any additional information.
+However, biometric data can change every time it is collected, making it unsuitable for direct use as a private key. In this paper, the concept of public key cryptography with fuzzy data is introduced, where a part of the biometric data can be used as the private key to decrypt ciphertexts without requiring any additional information.
 
 Compared to traditional public key encryption, the primary advantage of fuzzy public key encryption is that it does not require the user to carry any memory device or password to function as a private key. When using fuzzy public key encryption, attention should be paid to the value of the fuzzy set in the neutral degree, as these unclear points in system access allow potential vulnerabilities where hackers could access the system.
 
