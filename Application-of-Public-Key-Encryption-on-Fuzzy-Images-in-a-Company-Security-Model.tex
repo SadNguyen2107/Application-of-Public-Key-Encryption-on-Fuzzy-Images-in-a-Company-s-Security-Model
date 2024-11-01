@@ -134,7 +134,7 @@
     traditional public key encryption models, where the private key is typically stored on
     devices (e.g., on USB drives), the picture fuzzy public key encryption model does not
     require any device to store the private key
-}
+}\
 
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
@@ -154,12 +154,12 @@ in internal company security models utilizing biometrics.
 
 \section{Symbols and definitions}
 \begin{enumerate}[label=(\roman*), itemsep=1em]
-    \item Let \( \mathbb{N} \), \( \mathbb{Z} \), and \( \mathbb{R} \) denote the sets of natural numbers, integers, and real numbers, respectively. If \( n \in \mathbb{N} \), let \( [n] := \{1,\, \ldots,\, n\} \). If \( a \in \mathbb{R} \), then \( \lfloor a \rceil \) denotes the nearest integer to \( a \). Additionally, if \( a = (a_1,\, a_2,\, \ldots) \), let \( \lfloor a \rceil := (\lfloor a_1 \rceil,\, \lfloor a_2 \rceil,\, \ldots) \).
-    \item The notation \( x \leftarrow y \) denotes that \( y \) is assigned to \( x \). If \( S \) is a finite set, \( |S| \) represents its size, and \( x \leftarrow_{{R}}   S \) means that \( x \) is chosen randomly from \( S \). If \( \varPhi \) is a distribution over some set, \( x \leftarrow_R \varPhi \) denotes that \( x \) is chosen according to distribution \( \varPhi \). Let \( f: D \rightarrow R \) be a function and \( y \in R \) a value; \( { f^{-1}(y) } \) represents the set of pre-images of \( y \) under \( f \), i.e., \( { f^{-1}(y) = \{x \in D \mid f(x) = y\} } \). If \( x \) and \( y \) are bitstrings, then \( |x| \) denotes the bit length of \( x \), and \( (x || y) \) represents the concatenation of \( x \) and \( y \).
-    \item A function \( f(.): \mathbb{N} \rightarrow [0, 1] \) is called negligible if for every positive polynomial \( p(.) \) and every sufficiently large \( \lambda \) then \( f(\lambda) < \dfrac{1}{p(\lambda)} \).
+    \item Let \( \mathbb{N} \), \( \mathbb{Z} \), and \( \mathbb{R} \) denote the sets of natural numbers, integers, and real numbers, respectively. If \( n \in \mathbb{N} \), let \( [n] := \{1,\, \ldots,\, n\} \). If \( a \in \mathbb{R} \), then \( \boldsymbol{\lfloor a \rceil} \) denotes the nearest integer to \( a \). Additionally, if \( a = \boldsymbol{(a_1,\, a_2,\, \ldots)} \), let \( \boldsymbol{\lfloor a \rceil := (\lfloor a_1 \rceil,\, \lfloor a_2 \rceil,\, \ldots)} \).
+    \item The notation \( x \leftarrow y \) denotes that \( y \) is assigned to \( x \). If \( S \) is a finite set, \( |S| \) represents its size, and \( x \leftarrow_{\mathbf{R}}   S \) means that \( x \) is chosen randomly from \( S \). If \( \varPhi \) is a distribution over some set, \( x \leftarrow_{\mathbf{R}} \varPhi \) denotes that \( x \) is chosen according to distribution \( \varPhi \). Let \( f: D \rightarrow R \) be a function and \( y \in R \) a value; \( \boldsymbol{ f^{-1}(y) } \) represents the set of pre-images of \( y \) under \( f \), i.e., \( \boldsymbol{ f^{-1}(y) := \{x \in D \mid f(x) = y\} } \). If \( x \) and \( y \) are bitstrings, then \( |x| \) denotes the bit length of \( x \), and \( (x || y) \) represents the concatenation of \( x \) and \( y \).
+    \item A function \( f(.): \mathbb{N} \rightarrow [0, 1] \) is called negligible if for every positive polynomial \( p(.) \) and every sufficiently large \( \mathbf{\lambda} \) then \(  \mathbf{f(\lambda) < \dfrac{1}{p(\lambda)}} \).
     \item How to set the open key: \\
-          1 open key setting \( \mathcal{F} \) includes \( ((d, X), t, \mathcal{X}  , \varPhi, \epsilon) \) with \( (d, X) \) being the \allowbreak spatial data with \( X \) being the space containing the values of the fuzzy set of the \allowbreak picture \( A \) and \( d : X^2 \to \mathbb{R} \) being the corresponding distance function. \( t \in \mathbb{R} \) is the \allowbreak threshold value determined by the security parameter \( \lambda \), \( \mathcal{X} \) is the \allowbreak distribution of the fuzzy data on \( X \), \( \varPhi \) is the error distribution and \( \epsilon \in [0,1] \) is an error \allowbreak parameter representing the false rejection rate. The False Acceptance Rate (FAR) and False Rejection Rate (FRR) are determined based on the threshold value \( t \).\\[6pt]
-          \textbf{Requirement}: \( \text{FAR} := \Pr[x,\, x' \leftarrow_{{R}} {\mathcal{X}} : d(x,\, x') < t] \) is negligible in the \allowbreak security parameter  \( \lambda \). Also for all fuzzy data parts of \( x \in {X} \), \( \text{FRR} := \Pr[e \leftarrow_{{R}} \varPhi : \mathrm{d}(x, \, x + e) \geq t] \leq \epsilon \)
+          1 open key setting \( \mathbf{F} \) includes \( ((d, \, X), \, t, \, \mathbf{X}  ,\, \varPhi,\, \mathbf{\epsilon} ) \) with \( (d, \, X) \) being the \allowbreak spatial data with \( X \) being the space containing the values of the fuzzy set of the \allowbreak picture \( A \) and \( d :\mathbf{X^2} \to \mathbb{R} \) being the corresponding distance function. \( t \in \mathbb{R} \) is the \allowbreak threshold value determined by the security parameter \( \lambda \), \( \mathbf{X} \) is the \allowbreak distribution of the fuzzy data on \( X \), \( \varPhi \) is the error distribution and \( \mathbf{ \epsilon \in [0,1] } \) is an error \allowbreak parameter representing the false rejection rate. The False Acceptance Rate (FAR) and False Rejection Rate (FRR) are determined based on the threshold value \( t \).\\[6pt]
+          \textbf{Requirement}: \( \text{FAR} := \Pr[x,\, x' \leftarrow_{\mathbf{R}} {\mathbf{X}} : d(x,\, x') < t] \) is negligible in the \allowbreak security parameter  \( \lambda \). Also for all fuzzy data parts of \( x \in \mathbf{X} \), \( \text{FRR} := \Pr[e \leftarrow_{\mathbf{R}} \varPhi : \mathrm{d}(x, \, x + e) \geq t] \leq \epsilon \)
     \item The definition of picture fuzzy set (PFS) is an extension of fuzzy set and \allowbreak intuitionistic fuzzy set. Picture fuzzy set is based on a complete model in \allowbreak situations where we have human opinions: yes, no, neutral. \\[6pt]
           Given a background set \( X = \{x_1, x_2, \dots, x_n \} \), a picture fuzzy set \( A \) on \( X \) is \allowbreak defined by
           \[
@@ -271,7 +271,7 @@ The public key cryptography scheme consists of the following six algorithms: Key
 
     \item \textbf{Set} \( (1^\lambda) \to par  \): when entering the security parameter \( \lambda \), this algorithm will output the public parameter \(  par \), including the fuzzy key setting
           \[
-              \mathcal{F} = ((d, \, X), \, t, \, X, \, \varPhi, \, \epsilon)
+              F = ((d, \, X), \, t, \, X, \, \varPhi, \, \epsilon)
           \]
 
     \item \textbf{KeyGen} \( (par ,\, x) \to \text{pk}_f \): when entering the public parameter \(  par \) and the fuzzy picture data of \( x \in X \), this algorithm outputs the public key \( \text{pk}_f \).
@@ -288,7 +288,7 @@ The public key cryptography scheme consists of the following six algorithms: Key
 
 \end{itemize}
 
-We say that the public key encryption scheme of a fuzzy picture with the fuzzy key setting \( \mathcal{F} \) is correct, meaning that for every security parameter \( \lambda \in \mathbb{N} \) with all fuzzy picture data of \( x, x' \in X \) such that \( \mathrm{d}(x, x') < t \), for all messages \( M \) in the \allowbreak message space, if:
+We say that the public key encryption scheme of a fuzzy picture with the fuzzy key setting \( F \) is correct, meaning that for every security parameter \( \lambda \in \mathbb{N} \) with all fuzzy picture data of \( x, x' \in X \) such that \( \mathrm{d}(x, x') < t \), for all messages \( M \) in the \allowbreak message space, if:
 \begin{align*}
     par         & \leftarrow \text{Set}(1^\lambda)                    \\[6pt]
     \text{pk}_f & \leftarrow \text{KeyGen}(par ,\, x)                 \\[6pt]
@@ -302,8 +302,8 @@ we get:
 
 \subsection*{B. Security Model}
 
-Similar to the security definition of a public key cryptography scheme, a fuzzy public key cryptography scheme is required to be indistinguishable under universal faults of the fuzzy key setting \( \mathcal{F} \).
-A fuzzy public key cryptography scheme in fuzzy key setting \( \mathcal{F} \) is said to be indistinguishable under chosen ciphertext attacks (IND-CCA security) if for any adversary \( \mathcal{A} \) we have an advantage function given by:
+Similar to the security definition of a public key cryptography scheme, a fuzzy public key cryptography scheme is required to be indistinguishable under universal faults of the fuzzy key setting \( F \).
+A fuzzy public key cryptography scheme in fuzzy key setting \( F \) is said to be indistinguishable under chosen ciphertext attacks (IND-CCA security) if for any adversary \( \mathcal{A} \) we have an advantage function given by:
 
 \begin{equation*}
     Adv\begin{array}{c}
@@ -413,11 +413,11 @@ Example of the Decryption Algorithm:
 \end{enumerate}
 
 \subsection*{- Detailed Implementation of the Algorithm}
-Install the fuzzy key \( \mathcal{F} = ((d, X), t, \mathcal{X}, \varPhi, \epsilon) \). The Public Fuzzy Public Key \allowbreak Encryption (PFPKE) includes extracting the fuzzy representation, installation, \allowbreak Keygen, key code, and decryption, ensuring IND-CCA security, with \( K \) being the space of private keys that determine the key characteristics and homomorphism.
+Install the fuzzy key \( F = ((d, X), t, \mathcal{X}, \varPhi, \epsilon) \). The Public Fuzzy Public Key \allowbreak Encryption (PFPKE) includes extracting the fuzzy representation, installation, \allowbreak Keygen, key code, and decryption, ensuring IND-CCA security, with \( K \) being the space of private keys that determine the key characteristics and homomorphism.
 
-Assume that \( S = (\text{S.Setup},\, \text{S.Sketch}, \text{S.DiffRec}) \) is the probabilistic algorithm for installing the fuzzy key \( \mathcal{F} \), and \( \text{Sig} = (\text{Sig.KeyGen},\, \text{Sig.Sign},\, \text{Sig.Verify}) \) is the \allowbreak one-time signature algorithm.
+Assume that \( S = (\text{S.Setup},\, \text{S.Sketch}, \text{S.DiffRec}) \) is the probabilistic algorithm for installing the fuzzy key \( F \), and \( \text{Sig} = (\text{Sig.KeyGen},\, \text{Sig.Sign},\, \text{Sig.Verify}) \) is the \allowbreak one-time signature algorithm.
 
-The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linked to the installation of the fuzzy key \( \mathcal{F} \), including the following steps:
+The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linked to the installation of the fuzzy key \( F \), including the following steps:
 
 \begin{enumerate}
     \item \textbf{Extract the fuzzy representation}: This step takes the biometric information of the user as input. The output is the fuzzy representation data:
@@ -425,13 +425,13 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
               \text{Gen(Bio)} = \left\{ \langle x,\, \mu_A(x),\, \eta_A(x),\, \nu_A(x) \rangle \mid x \in X \right\}.
           \]
 
-    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the \break installation of the fuzzy key \( \mathcal{F} = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is \allowbreak obtained:
+    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the \break installation of the fuzzy key \( F = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is \allowbreak obtained:
           \[
               par_{pke} \leftarrow_R S.\text{Setup}(1^\lambda), \quad par_S \leftarrow_R S.\text{Setup}(\kappa, +).
           \]
           The final public parameter is:
           \[
-              par  = (par_{pke},\, par_S,\, \mathcal{F}).
+              par  = (par_{pke},\, par_S,\, F).
           \]
 
     \item \textbf{KeyGen}: Takes the public parameter \(  par \) and a part of the fuzzy representation data of \( x \) as input. It parses \( par  = (par_{pke}, par_S) \), then runs:
