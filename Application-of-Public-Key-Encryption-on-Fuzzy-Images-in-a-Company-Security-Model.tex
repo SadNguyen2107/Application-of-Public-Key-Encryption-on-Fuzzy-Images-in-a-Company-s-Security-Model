@@ -142,18 +142,17 @@
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-In traditional security models within companies using public key infrastructure, each employee must have a public-private key pair. If an employee receives an encrypted message, it means the message has been encrypted using that employee's public key, and they will decrypt it with their private key. The most important aspect for the employee is to keep their private key secure, as a leak of this key would compromise the system's security. A widely accepted method is to store the private key on a physical device like a smart card or USB drive and require the employee to remember a password to activate it
-\parencite{Ellison2000}.
-An ideal approach is to use biometric data (e.g., fingerprints or iris patterns)
-\parencite{Connaughton2007}
-as a private key since biometric data is unique to each individual, providing a convenient and secure way to serve as a private key for users. However, biometric data can be blurry or noisy and may change every time it is captured, making it unsuitable for use as a private key in traditional public key encryption schemes.
-To address this issue, this paper introduces the concept of fuzzy signatures
-\parencite{Takahashi2015}
-,which use biometric data as a private key without requiring any assistance
-\parencite{Dodis2008}
-. Thus, it applies public key cryptography with fuzzy images
-\parencite{Son2016}
-in internal company security models utilizing biometrics.
+In traditional security models within companies that utilize public key infrastructure (PKI), each employee is required to have a unique public-private key pair. This key pair is essential for secure communication within the organization. When an employee receives an encrypted message, it indicates that the message has been encrypted using the employee’s public key. To decrypt and read the message, the employee must use their private key. The security of the entire system hinges on the confidentiality of the private key. If the private key is compromised, the security of the system is at risk. Therefore, it is crucial for employees to keep their private keys secure.
+
+A widely accepted method for securing private keys is to store them on physical devices such as smart cards or USB drives. These devices require the employee to remember a password to activate the private key. This method, as discussed by \citeauthor{Ellison2000} (\citeyear{Ellison2000}), adds an additional layer of security by combining something the employee has (the physical device) with something they know (the password).
+
+An ideal approach to enhance security further is to use biometric data, such as fingerprints or iris patterns, as a private key. Biometric data is unique to each individual, making it a convenient and secure way to serve as a private key for users. \citeauthor{Connaughton2007} (\citeyear{Connaughton2007}) highlight the advantages of using biometric data, noting that it eliminates the need for employees to remember passwords or carry physical devices. However, biometric data can be blurry or noisy and may change slightly each time it is captured. This variability makes it unsuitable for use as a private key in traditional public key encryption schemes.
+
+To address this issue, this paper introduces the concept of fuzzy signatures, as proposed by \citeauthor{Takahashi2015} (\citeyear{Takahashi2015}). Fuzzy signatures use biometric data as a private key without requiring any additional assistance. This approach leverages the inherent variability in biometric data to create a secure and reliable method for encryption and decryption. \citeauthor{Dodis2008} (\citeyear{Dodis2008}) further elaborate on the use of fuzzy signatures, explaining how they can generate strong cryptographic keys from noisy data.
+
+By applying public key cryptography with fuzzy images, as suggested by \citeauthor{Son2016} (\citeyear{Son2016}), internal company security models can effectively utilize biometrics. This method ensures that even if the biometric data is not captured perfectly every time, the system can still function securely. The use of fuzzy signatures and fuzzy images provides a robust solution for integrating biometric data into public key infrastructure, enhancing the overall security of the system.
+
+This approach not only simplifies the process for employees but also strengthens the security framework of the organization by leveraging the unique and immutable characteristics of biometric data.
 
 \section{Related Work}
 \subsection{The research of public-key cryptography}
