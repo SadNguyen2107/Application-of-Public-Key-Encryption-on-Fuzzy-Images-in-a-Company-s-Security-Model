@@ -43,6 +43,7 @@
 \usepackage{caption}         % for controlling figure/table captions
 \usepackage{float}           % to improve figure positioning
 
+\usepackage{microtype}
 \usepackage[none]{hyphenat} % Prevents hyphenation
 \sloppy % Allows LaTeX to be less strict about line breaking
 
@@ -81,6 +82,10 @@
 % \usepackage{subfigure}
 \usepackage{indentfirst}
 
+\DefineBibliographyStrings{english}{
+  andothers = {et al} % Removes the period after "et al"
+}
+
 %% The amssymb package provides various useful mathematical symbols
 \renewcommand\tabularxcolumn[1]{m{#1}}
 \newcommand{\itemEq}[1]{%
@@ -104,55 +109,94 @@
 \title*{Application of Public Key Encryption on Fuzzy Images in a Company's Security Model}
 \titlerunning{Application of Public Key Encryption on Fuzzy Images in a Company's Security Model}
 
-\author{}
-\authorrunning{}
+\author{Hai Van Pham, Khoi Nguyen Dao, Hoang Le Nguyen, Anh Tuan Hoang Nguyen, Son Trung Nguyen}
+\authorrunning{Hai Van Pham et al.}
 
-\institute{}
+\institute{Hai Van Pham, Khoi Nguyen Dao, Hoang Le Nguyen, Anh Tuan Hoang Nguyen, Son Trung Nguyen \at
+    School of Information and Communication Technology, Hanoi University of Science and Technology, Hanoi, Vietnam,  corresponding authors \email{haipv@soict.hust.edu.vn}}
 
 \maketitle
 
 \abstract*{
-    This report presents an approach to addressing the implementation of a
-    security model in companies by using picture fuzzy public key encryption, with a more
-    detailed focus on utilizing user biometric data as a secret key. Since biometric data is
-    blurred or noisy and changes with each collection, traditional public key encryption
-    models cannot be used; instead, a picture fuzzy public key encryption model must be
-    employed. This study introduces the concept of picture fuzzy public key encryption
-    (PFPKE), a public encryption model that accepts a portion of blurred data (a noisy version
-    of the original biometric data) as a private key for decrypting the ciphertext. Unlike
-    traditional public key encryption models, where the private key is typically stored on
-    devices (e.g., on USB drives), the picture fuzzy public key encryption model does not
-    require any device to store the private key
+    This report presents an approach to addressing the implementation of a security model
+    in companies by using picture fuzzy public key encryption, with a more detailed focus
+    on utilizing user biometric data as a secret key. Since biometric data is blurred or
+    noisy and changes with each collection, traditional public key encryption models
+    cannot be used; instead, a picture fuzzy public key encryption model must be employed.
+    This study introduces the concept of picture fuzzy public key encryption (PFPKE),
+    a public encryption model that accepts a portion of blurred data (a noisy version of
+    the original biometric data) as a private key for decrypting the ciphertext. Unlike
+    traditional public key encryption models, where the private key is typically stored
+    on devices (e.g., on USB drives), the picture fuzzy public key encryption model does
+    not require any device to store the private key. In this paper, research team will
+    introduce the concept of public key cryptography in which biometrics data can be used
+    as a private key to decrypt ciphertext without requiring any additional information.
 }
 
 \abstract{
-    This report presents an approach to addressing the implementation of a
-    security model in companies by using picture fuzzy public key encryption, with a more
-    detailed focus on utilizing user biometric data as a secret key. Since biometric data is
-    blurred or noisy and changes with each collection, traditional public key encryption
-    models cannot be used; instead, a picture fuzzy public key encryption model must be
-    employed. This study introduces the concept of picture fuzzy public key encryption
-    (PFPKE), a public encryption model that accepts a portion of blurred data (a noisy version
-    of the original biometric data) as a private key for decrypting the ciphertext. Unlike
-    traditional public key encryption models, where the private key is typically stored on
-    devices (e.g., on USB drives), the picture fuzzy public key encryption model does not
-    require any device to store the private key
+    This report presents an approach to addressing the implementation of a security model
+    in companies by using picture fuzzy public key encryption, with a more detailed focus
+    on utilizing user biometric data as a secret key. Since biometric data is blurred or
+    noisy and changes with each collection, traditional public key encryption models
+    cannot be used; instead, a picture fuzzy public key encryption model must be employed.
+    This study introduces the concept of picture fuzzy public key encryption (PFPKE),
+    a public encryption model that accepts a portion of blurred data (a noisy version of
+    the original biometric data) as a private key for decrypting the ciphertext. Unlike
+    traditional public key encryption models, where the private key is typically stored
+    on devices (e.g., on USB drives), the picture fuzzy public key encryption model does
+    not require any device to store the private key. In this paper, research team will
+    introduce the concept of public key cryptography in which biometrics data can be used
+    as a private key to decrypt ciphertext without requiring any additional information.
 }
 
 \keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
 
 \section{Introduction}
-In traditional security models within companies that utilize public key infrastructure (PKI), each employee is required to have a unique public-private key pair. This key pair is essential for secure communication within the organization. When an employee receives an encrypted message, it indicates that the message has been encrypted using the employee’s public key. To decrypt and read the message, the employee must use their private key. The security of the entire system hinges on the confidentiality of the private key. If the private key is compromised, the security of the system is at risk. Therefore, it is crucial for employees to keep their private keys secure.
+In traditional security models within companies that utilize public key infrastructure (PKI),
+each employee is required to have a unique public-private key pair. This key pair is
+essential for secure communication within the organization. When an employee receives an
+encrypted message, it indicates that the message has been encrypted using the employee’s
+public key. To decrypt and read the message, the employee must use their private key.
+The security of the entire system hinges on the confidentiality of the private key.
+If the private key is compromised, the security of the system is at risk.
+Therefore, it is crucial for employees to keep their private keys secure.
 
-A widely accepted method for securing private keys is to store them on physical devices such as smart cards or USB drives. These devices require the employee to remember a password to activate the private key. This method, as discussed by \citeauthor{Ellison2000} (\citeyear{Ellison2000}), adds an additional layer of security by combining something the employee has (the physical device) with something they know (the password).
+A widely accepted method for securing private keys is to store them on physical devices
+such as smart cards or USB drives. These devices require the employee to remember a
+password to activate the private key. This method, as discussed by \citeauthor{Ellison2000} (\citeyear{Ellison2000}),
+adds an additional layer of security by combining something the employee has
+(the physical device) with something they know (the password).
 
-An ideal approach to enhance security further is to use biometric data, such as fingerprints or iris patterns, as a private key. Biometric data is unique to each individual, making it a convenient and secure way to serve as a private key for users. \citeauthor{Connaughton2007} (\citeyear{Connaughton2007}) highlight the advantages of using biometric data, noting that it eliminates the need for employees to remember passwords or carry physical devices. However, biometric data can be blurry or noisy and may change slightly each time it is captured. This variability makes it unsuitable for use as a private key in traditional public key encryption schemes.
+An ideal approach to enhance security further is to use biometric data,
+such as fingerprints or iris patterns, as a private key.
+Biometric data is unique to each individual, making it a convenient and secure way to
+serve as a private key for users. \citeauthor{Connaughton2007} (\citeyear{Connaughton2007})
+highlight the advantages of using biometric data, noting that it eliminates the need for
+employees to remember passwords or carry physical devices. However, biometric data can be
+blurry or noisy and may change slightly each time it is captured. This variability makes
+it unsuitable for use as a private key in traditional public key encryption schemes.
 
-To address this issue, this paper introduces the concept of fuzzy signatures, as proposed by \citeauthor{Takahashi2015} (\citeyear{Takahashi2015}). Fuzzy signatures use biometric data as a private key without requiring any additional assistance. This approach leverages the inherent variability in biometric data to create a secure and reliable method for encryption and decryption. \citeauthor{Dodis2008} (\citeyear{Dodis2008}) further elaborate on the use of fuzzy signatures, explaining how they can generate strong cryptographic keys from noisy data.
+To address this issue, this paper introduces the concept of fuzzy signatures, as proposed by
+\citeauthor{Takahashi2015} (\citeyear{Takahashi2015}). Fuzzy signatures use biometric data
+as a private key without requiring any additional assistance. This approach leverages the
+inherent variability in biometric data to create a secure and reliable method for encryption
+and decryption. \citeauthor{Dodis2008} (\citeyear{Dodis2008}) further elaborate on the use of fuzzy signatures, explaining how they can generate strong cryptographic keys from noisy data.
 
-By applying public key cryptography with fuzzy images, as suggested by \citeauthor{Son2016} (\citeyear{Son2016}), internal company security models can effectively utilize biometrics. This method ensures that even if the biometric data is not captured perfectly every time, the system can still function securely. The use of fuzzy signatures and fuzzy images provides a robust solution for integrating biometric data into public key infrastructure, enhancing the overall security of the system.
+By applying public key cryptography with fuzzy images, as suggested by
+\citeauthor{Son2016} (\citeyear{Son2016}), internal company security models can
+effectively utilize biometrics. This method ensures that even if the biometric data is not
+captured perfectly every time, the system can still function securely. The use of fuzzy
+signatures and fuzzy images provides a robust solution for integrating biometric data into
+public key infrastructure, enhancing the overall security of the system.
 
-This approach not only simplifies the process for employees but also strengthens the security framework of the organization by leveraging the unique and immutable characteristics of biometric data.
+This approach not only simplifies the process for employees but also strengthens the security
+framework of the organization by leveraging the unique and immutable characteristics of
+biometric data. In this study, we introduce a novel approach to public key cryptography that enables the direct
+use of biometric data as private keys for decryption, without requiring any supplementary information
+or external devices. Our method addresses the fundamental challenge of using inherently variable
+biometric data in cryptographic systems by incorporating advanced fuzzy matching techniques. This
+innovation represents a significant advancement over existing approaches, as it eliminates the need for traditional 
+key storage methods while maintaining the security guarantees of public key cryptography.
 
 \section{Related Work}
 \subsection{The research of public-key cryptography}
@@ -547,12 +591,41 @@ The public key encryption scheme is homomorphic if it satisfies the following co
     \item There exists an algorithm that determines \( M_{en} \), taking the public parameters \( par_{pke} \), public key \( pk_{pke} \), ciphertext \( CT \), and shifted private key \( \Delta sk \in \kappa_{pke} \) as input, and outputs the shifted ciphertext message.
 \end{itemize}
 
+\section{Open discussion}
+The proposed approach of using biometric data as private keys in public key cryptography offers a transformative solution for secure communication within organizations. Traditional PKI systems require employees to secure private keys on external devices, such as USB drives or smart cards, and protect them with passwords. While effective, these methods introduce operational complexities and security risks, especially if devices are lost or passwords forgotten. The integration of biometric data addresses these challenges by allowing users to access their private keys directly through unique physical traits, removing the dependency on external devices memory-based security measures. Biometric-based private key system could transform several industries, particularly those handling sensitive data. For example:
+
+\begin{enumerate}
+    \item \textbf{Healthcare Data Security}
+          \begin{itemize}
+              \item Biometric authentication in healthcare is increasingly explored due to its potential for securing patient data. For example, \citeauthor{Anuar2015} (\citeyear{Anuar2015}) discuss biometric systems in healthcare, emphasizing how they can improve access control without requiring physical tokens or passwords, which can be lost or compromised. They highlight that biometric systems reduce unauthorized access risks in settings with high confidentiality requirements, like hospitals.
+          \end{itemize}
+    \item \textbf{Financial Security and Biometric Authentication}
+          \begin{itemize}
+              \item Financial institutions have shown interest in biometrics to mitigate risks associated with traditional authentication methods. Studies like \citeauthor{BhargavSpantzel2007} (\citeyear{BhargavSpantzel2007}) discuss the advantages of biometric systems in finance, especially for customer identity verification and transaction authentication, which helps combat credential theft and phishing. In real-world applications, companies such as Mastercard and Citibank have piloted or implemented fingerprint or facial recognition for secure transaction approval.
+          \end{itemize}
+    \item \textbf{Government and Defense Applications}
+          \begin{itemize}
+              \item In government sectors, biometric authentication is already widely applied, particularly for access to secure facilities and classified information. \citeauthor{Bhatnagar2017} (\citeyear{Bhatnagar2017}) examine the use of biometrics in defense, explaining how biometric PKI could replace or complement existing card-based systems. The Department of Defense in the U.S., for instance, uses multi-biometric systems for personnel access to sensitive locations, balancing ease of access with high-security requirements.
+          \end{itemize}
+\end{enumerate}
+
 \section{Conclusion}
-In the traditional method, messages encrypted using public key schemes rely on protecting the privacy of the user's private key by storing it in a physical device, such as a USB token carried by the user. However, it is not always practical for the user to keep the device with them at all times. To solve this problem, using individual biometric data as the private key is a reasonable alternative.
+In the traditional method, messages encrypted using public key schemes rely on protecting
+the privacy of the user's private key by storing it in a physical device, such as a USB
+token carried by the user. However, it is not always practical for the user to keep the
+device with them at all times. To solve this problem, using individual biometric data as
+the private key is a reasonable alternative.
 
-However, biometric data can change every time it is collected, making it unsuitable for direct use as a private key. In this paper, the concept of public key cryptography with fuzzy data is introduced, where a part of the biometric data can be used as the private key to decrypt ciphertexts without requiring any additional information.
+However, biometric data can change every time it is collected, making it unsuitable for
+direct use as a private key. In this paper, the concept of public key cryptography with
+fuzzy data is introduced, where a part of the biometric data can be used as the private
+key to decrypt ciphertexts without requiring any additional information.
 
-Compared to traditional public key encryption, the primary advantage of fuzzy public key encryption is that it does not require the user to carry any memory device or password to function as a private key. When using fuzzy public key encryption, attention should be paid to the value of the fuzzy set in the neutral degree, as these unclear points in system access allow potential vulnerabilities where hackers could access the system.
+Compared to traditional public key encryption, the primary advantage of fuzzy public key
+encryption is that it does not require the user to carry any memory device or password to
+function as a private key. When using fuzzy public key encryption, attention should be paid
+to the value of the fuzzy set in the neutral degree, as these unclear points in system access
+allow potential vulnerabilities where hackers could access the system.
 
 \section*{Acknowledgments}
 Acknowledgments section
