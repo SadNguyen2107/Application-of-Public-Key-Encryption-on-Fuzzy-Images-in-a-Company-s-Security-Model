@@ -1,9 +1,10 @@
-\documentclass[graybox]{svmult}
+\documentclass[twocolumn]{article}
 
 % -----------------------------------------------------------------------------------
 
 % choose options for [] as required from the list % in the
 % Reference Guide
+\usepackage[a4paper, left=1cm, right=1cm, top=1in, bottom=1in]{geometry}
 
 \usepackage{mathptmx}       % selects Times Roman as basic font
 \usepackage{helvet}         % selects Helvetica as sans-serif font
@@ -104,34 +105,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\setlength{\columnsep}{1cm} % Adjust column separation
+\title{Application of Public Key Encryption on Fuzzy Images in a Company's Security Model}
+\author{Hai Van Pham, Khoi Nguyen Dao, Hoang Le Nguyen, Anh Tuan Hoang Nguyen, Son Trung Nguyen}
+\date{}
+
 \begin{document}
 
-\title*{Application of Public Key Encryption on Fuzzy Images in a Company's Security Model}
-\titlerunning{Application of Public Key Encryption on Fuzzy Images in a Company's Security Model}
-
-\author{Hai Van Pham, Khoi Nguyen Dao, Hoang Le Nguyen, Anh Tuan Hoang Nguyen, Son Trung Nguyen}
-\authorrunning{Hai Van Pham et al.}
-
-\institute{Hai Van Pham, Khoi Nguyen Dao, Hoang Le Nguyen, Anh Tuan Hoang Nguyen, Son Trung Nguyen \at
-    School of Information and Communication Technology, Hanoi University of Science and Technology, Hanoi, Vietnam,  corresponding authors \email{haipv@soict.hust.edu.vn}}
-
 \maketitle
-
-\abstract*{
-    This report presents an approach to addressing the implementation of a security model
-    in companies by using picture fuzzy public key encryption, with a more detailed focus
-    on utilizing user biometric data as a secret key. Since biometric data is blurred or
-    noisy and changes with each collection, traditional public key encryption models
-    cannot be used; instead, a picture fuzzy public key encryption model must be employed.
-    This study introduces the concept of picture fuzzy public key encryption (PFPKE),
-    a public encryption model that accepts a portion of blurred data (a noisy version of
-    the original biometric data) as a private key for decrypting the ciphertext. Unlike
-    traditional public key encryption models, where the private key is typically stored
-    on devices (e.g., on USB drives), the picture fuzzy public key encryption model does
-    not require any device to store the private key. In this paper, research team will
-    introduce the concept of public key cryptography in which biometrics data can be used
-    as a private key to decrypt ciphertext without requiring any additional information.
-}
 
 \abstract{
     This report presents an approach to addressing the implementation of a security model
@@ -149,7 +131,7 @@
     as a private key to decrypt ciphertext without requiring any additional information.
 }
 
-\keywords{Picture fuzzy public key encryption, fuzzy data, biometrics}
+
 
 \section{Introduction}
 In traditional security models within companies that utilize public key infrastructure (PKI),
@@ -195,7 +177,7 @@ biometric data. In this study, we introduce a novel approach to public key crypt
 use of biometric data as private keys for decryption, without requiring any supplementary information
 or external devices. Our method addresses the fundamental challenge of using inherently variable
 biometric data in cryptographic systems by incorporating advanced fuzzy matching techniques. This
-innovation represents a significant advancement over existing approaches, as it eliminates the need for traditional 
+innovation represents a significant advancement over existing approaches, as it eliminates the need for traditional
 key storage methods while maintaining the security guarantees of public key cryptography.
 
 \section{Related Work}
@@ -213,7 +195,6 @@ In other words, the computational complexity of our scheme is independent of the
 \citeauthor{imam2022} (\citeyear{imam2022}) proposed scheme uses four random large prime numbers to generate public–private key pairs and applies XOR operation along with the more complex intermediate process in key-generation encryption and decryption phases to achieve higher algorithm complexity, which would require more time to break the proposed cipher and would make it extremely difficult for third-parties to attack, hence boosting security.
 \citeauthor{park2024new} (\citeyear{park2024new}) proposed a new RSA-based public key encryption scheme with authorized equality test (PKE-AET).\citeauthor{sangeetha2024rsa} (\citeyear{sangeetha2024rsa}) proposed a new method to reduce execution time for RSA cryptosystem. A improved public key cryptographic algorithm based on Chebyshev Polynomial and RSA was proposed by \citeauthor{zhang2024improved} (\citeyear{zhang2024improved}). \citeauthor{haidary2024inverse} (\citeyear{haidary2024inverse}) presented an algorithm using matrices inversion for public-key cryptography.
 
-
 \subsection{The research of biometrics as an security methods and its application in company}
 Biometrics such as fingerprints, handprints have been use since ancient times according to \citeauthor{gupta2008biometrics} (\citeyear{gupta2008biometrics}) and the author pointed out the use of biometrics for identity authentication and identification for enhancing security in organizations.
 In the research of \citeauthor{bidgoli2012introduction}(\citeyear{bidgoli2012introduction}) has introduced a six-step guide for company using biometrics as a security measure.
@@ -225,8 +206,7 @@ In the research of \citeauthor{bidgoli2012introduction}(\citeyear{bidgoli2012int
 \citeauthor{song2007personalized} (\citeyear{song2007personalized}) addressed Fingerhashing approach which transforms fingerprint into a binary discretized representation called Fingerhash and aimed to clarify some of the practical and security problems when using fingerhash to secure biometric key for protecting digital contents, they study two existing directions of biometric‐based key generation approach based on the usability, security and accuracy aspects.
 \citeauthor{nivedetha2020ffbks} (\citeyear{nivedetha2020ffbks}) published  experimental results show that the proposed Fuzzy Fingerprint Biometric Key Based Security Schema achieves better performance compared with the existing system in terms of simulation time, energy consumption, delay and attack detection rate.
 \citeauthor{kaur2023biometric} (\citeyear{kaur2023biometric}) combines characteristics of both the fields: biometric and cryptosystem, where biometric provides authentication and cryptosystem imparts security called Biometric Cryptosystem (BCS), BCS is prone to various attacks and this study covers 30 such attacks, its countermeasures to thwart these attacks.
-\citeauthor{trivedi2024approach} (\citeyear{trivedi2024approach}) explored the convergence of gait recognition and fingerprint identification using heat map integration. 
-\\[6pt]
+\citeauthor{trivedi2024approach} (\citeyear{trivedi2024approach}) explored the convergence of gait recognition and fingerprint identification using heat map integration.
 
 \subsection{The research of picture fuzzy public key encryption in security}
 \citeauthor{bellare2006relations} (\citeyear{bellare2006relations}) compare the relative strengths of popular notions of security for public key encryption schemes and consider the goals of privacy and non-malleability, each under chosen plaintext attack and two kinds of chosen ciphertext attack.
@@ -298,13 +278,11 @@ The scheme can also be extended to achieve security against chosen ciphertext at
           \end{equation}
 
 \end{enumerate}
-
-
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-                width=12cm, % Scale the plot to desired width
+                width=\columnwidth,  % Use column width to scale
                 height=5.5cm,
                 axis lines=middle,
                 xmin=0, xmax=10,
@@ -388,12 +366,12 @@ we get:
 Similar to the security definition of a public key cryptography scheme, a fuzzy public key cryptography scheme is required to be indistinguishable under universal faults of the fuzzy key setting \( F \).
 A fuzzy public key cryptography scheme in fuzzy key setting \( F \) is said to be indistinguishable under chosen ciphertext attacks (IND-CCA security) if for any adversary \( \mathcal{A} \) we have an advantage function given by:
 {
-\small
+\scriptsize
 \begin{equation}
-    Adv\begin{array}{c}
+    Adv\begin{aligned}
         ind-cca                  \\
         \text{FPKE}, \mathcal{A} \\
-    \end{array} (\lambda)
+    \end{aligned} (\lambda)
     =
     Pr\left[b'= b \left| \begin{array}{c}
             par  \leftarrow Init(1^\lambda)                                                         \\
@@ -411,9 +389,15 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
 
 \section{Construct algorithm for fuzzy public key encryption}
 \subsection*{- Encryption Algorithm}
+% Define the styles
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{data} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[node distance=2cm]
+    \begin{tikzpicture}[node distance=2cm, scale=0.8, transform shape]
         % Nodes
         \node (start) [startstop] {Start};
         \node (bio) [data, below of=start] {User biometric information};
@@ -434,12 +418,10 @@ This is negligible in the security parameter \( \lambda \), with \( |M_0| = |M_1
         \draw [arrow] (keygen) -- (message);
         \draw [arrow] (message) -- (encrypted);
         \draw [arrow] (encrypted) -- (end);
-
     \end{tikzpicture}
     \caption{Biometric encryption using picture fuzzy algorithm}
     \label{fig:biometric_encryption_fuzzy}
 \end{figure}
-
 Example of the Encryption Algorithm:
 \begin{enumerate}[itemsep=1em]
     \item First, the algorithm will perform the extraction of the biometric information of the user that has been encoded into a vector \( x = (5, 7, \dots, 1) \).
@@ -448,38 +430,36 @@ Example of the Encryption Algorithm:
     \item Execute the installation algorithm to obtain the output public parameter:\\
           par =
           \seqsplit{\textquotedblleft MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJQVu6lHAEtia3xc8fCEKd9dpt0jGt7FSiMz\textquotedblright}
-
-
     \item With \( par \) and fuzzy public key data obtained above through the key generation algorithm, the output public key \\ \( pk_f = (pk, \, c) \) =
           \seqsplit{(MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKD/RZvqG4ocFdsCpVpUbgrlYlEumD9qebAIVm3gv1Y6XN7w6jf2B4V9soP9jbXcmwEDy/N6xognyuqKAEB81JUCAwEAAQ==, \, MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKNQ0UmtSE2dD6Mbx0Vd8GWcTYvqPJNTqyg7xtJAYWWGPmjScKH1VUZw0lIRve3mtlLoxa7mRntUm6iw94ZSCXcCAwEAAQ).}
-
-    \item Input the message to be encrypted \\ \( M = \text{\textquotedblleft PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY\textquotedblright} \) into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext:\\ \( CT \)
+    \item Input the message to be encrypted \\ M =``PUBLIC ENCRYPTION OF FUZZY PUBLIC KEY" into the algorithm. From the message to be encrypted and the key obtained above through the encryption algorithm, we obtain the ciphertext:\\ \( CT \)
           =  \seqsplit{\textquotedblleft exhxWbrXSm7huDc/4LkAHnmk3i91K1FDBqUwpk01gLR0pY8Ow/SQe3xPLpdkSpoTLwm/T3KqI0qGs8HehzXHHw==\textquotedblright}.
 \end{enumerate}
-
+\subsection*{- Decryption Algorithm}
 \begin{figure}[H]
     \centering
-    \begin{tikzpicture}[node distance=2cm]
-        % Nodes
-        \node (start) [startstop] {Start};
-        \node (biometric) [data, below of=start] {User biometric information};
-        \node (fuzzykey) [process, below of=biometric] {Extraction of fuzzy public key};
-        \node (parameter) [data, below of=fuzzykey] {Public parameter};
-        \node (publickey) [data, below of=parameter] {Public key};
-        \node (message) [data, below of=publickey] {Encrypted Message};
-        \node (decryption) [process, below of=message] {Decryption};
-        \node (end) [startstop, below of=decryption] {End};
+    \resizebox{\linewidth}{!}{ % Resize to fit column width
+        \begin{tikzpicture}[node distance=2cm]
+            % Nodes
+            \node (start) [startstop] {Start};
+            \node (biometric) [data, below of=start] {User biometric information};
+            \node (fuzzykey) [process, below of=biometric] {Extraction of fuzzy public key};
+            \node (parameter) [data, below of=fuzzykey] {Public parameter};
+            \node (publickey) [data, below of=parameter] {Public key};
+            \node (message) [data, below of=publickey] {Encrypted Message};
+            \node (decryption) [process, below of=message] {Decryption};
+            \node (end) [startstop, below of=decryption] {End};
 
-        % Arrows
-        \draw [arrow] (start) -- (biometric);
-        \draw [arrow] (biometric) -- (fuzzykey);
-        \draw [arrow] (fuzzykey) -- (parameter);
-        \draw [arrow] (parameter) -- (publickey);
-        \draw [arrow] (publickey) -- (message);
-        \draw [arrow] (message) -- (decryption);
-        \draw [arrow] (decryption) -- (end);
-
-    \end{tikzpicture}
+            % Arrows
+            \draw [arrow] (start) -- (biometric);
+            \draw [arrow] (biometric) -- (fuzzykey);
+            \draw [arrow] (fuzzykey) -- (parameter);
+            \draw [arrow] (parameter) -- (publickey);
+            \draw [arrow] (publickey) -- (message);
+            \draw [arrow] (message) -- (decryption);
+            \draw [arrow] (decryption) -- (end);
+        \end{tikzpicture}
+    }
     \caption{Biometric decryption using picture fuzzy algorithm}
     \label{fig:biometric_decryption_fuzzy}
 \end{figure}
@@ -506,11 +486,11 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
 
 \begin{enumerate}
     \item \textbf{Extract the fuzzy representation}: This step takes the biometric information of the user as input. The output is the fuzzy representation data:
-          \begin{equation}
+          \begin{equation} \small
               \text{Gen(Bio)} = \left\{ \langle x,\, \mu_A(x),\, \eta_A(x),\, \nu_A(x) \rangle \mid x \in X \right\}
           \end{equation}
 
-    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the \break installation of the fuzzy key \( F = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is obtained:
+    \item \textbf{Installation}: The security parameter \( \lambda \) is taken as input. It defines the installation of the fuzzy key \( F = ((d,\, X),\, t,\, \mathcal{X},\, \varPhi,\, \epsilon) \). The public parameter \(  par \) is obtained:
           \begin{align}
               par_{pke} & \leftarrow_R S.\text{Setup}(1^\lambda) \\[6pt]
               par_S     & \leftarrow_R S.\text{Setup}(\kappa, +)
@@ -545,9 +525,10 @@ The public-key cryptographic scheme of the fuzzy representation (PFPKE) is linke
           \end{equation}
 
     \item \textbf{Extract fuzzy representation}: This step takes the user's biometric information as input. The output is the fuzzy representation data:
-          \begin{equation}
+          \begin{equation} \scriptsize
               \text{Gen}(\text{Bio}) = \left\{ \langle x', \, \mu_A(x'), \, \eta_A(x'), \, \nu_A(x') \rangle \mid x' \in X \right\}.
           \end{equation}
+
 
     \item \textbf{Decryption}: Takes the public parameters \(  par \), the public key \( pk_f \), the fuzzy representation data of \( x' \in X \), and the encoded message \( CT \) as input. It parses \( par  = (par_{pke}, par_S) \), \( pk_f = (pk, \, c) \), and \( CT = (svk, \, CT, \, \sigma) \). If \( \sigma \) is the signature on \( CT \) with respect to the public key \( svk \), it will run:
           \begin{align}
@@ -586,7 +567,7 @@ The public key encryption scheme is homomorphic if it satisfies the following co
     \item For the public parameters \( par_{pke} \) generated by the setup algorithm, there is an abelian group \( (\kappa_{pke}, +) \) associated with the private key space \( \kappa_{pke} \).
     \item There exists a deterministic algorithm denoted as \( \kappa_{{pk}_{pke}} \) that takes the public parameters \( par_{pke} \), the public key \( pk_{pke} \), and an input \(\Delta{sk} \in \kappa_{pke} \), and outputs a shifted public key \({pk}_{pke}'\). For every \( {par}_{pke} \) in the setup algorithm:
           {
-          \small
+          \footnotesize
           \begin{equation}
               \text{KeyGen}'( {par}_{pke}, \, {sk}_{pke} + \Delta{sk}) = M_{{pk}_{pke}} ({par}_{pke}, \, \text{KeyGen}'({par}_{pke}, \, {sk}_{pke}, \, \Delta{sk}))
           \end{equation}
@@ -599,17 +580,14 @@ The proposed approach of using biometric data as private keys in public key cryp
 
 \begin{enumerate}
     \item \textbf{Healthcare Data Security}
-          \begin{itemize}
-              \item Biometric authentication in healthcare is increasingly explored due to its potential for securing patient data. For example, \citeauthor{Anuar2015} (\citeyear{Anuar2015}) discuss biometric systems in healthcare, emphasizing how they can improve access control without requiring physical tokens or passwords, which can be lost or compromised. They highlight that biometric systems reduce unauthorized access risks in settings with high confidentiality requirements, like hospitals.
-          \end{itemize}
+          Biometric authentication in healthcare is increasingly explored due to its potential for securing patient data. For example, \citeauthor{Anuar2015} (\citeyear{Anuar2015}) discuss biometric systems in healthcare, emphasizing how they can improve access control without requiring physical tokens or passwords, which can be lost or compromised. They highlight that biometric systems reduce unauthorized access risks in settings with high confidentiality requirements, like hospitals.
+
     \item \textbf{Financial Security and Biometric Authentication}
-          \begin{itemize}
-              \item Financial institutions have shown interest in biometrics to mitigate risks associated with traditional authentication methods. Studies like \citeauthor{BhargavSpantzel2007} (\citeyear{BhargavSpantzel2007}) discuss the advantages of biometric systems in finance, especially for customer identity verification and transaction authentication, which helps combat credential theft and phishing. In real-world applications, companies such as Mastercard and Citibank have piloted or implemented fingerprint or facial recognition for secure transaction approval.
-          \end{itemize}
+          Financial institutions have shown interest in biometrics to mitigate risks associated with traditional authentication methods. Studies like \citeauthor{BhargavSpantzel2007} (\citeyear{BhargavSpantzel2007}) discuss the advantages of biometric systems in finance, especially for customer identity verification and transaction authentication, which helps combat credential theft and phishing. In real-world applications, companies such as Mastercard and Citibank have piloted or implemented fingerprint or facial recognition for secure transaction approval.
+
     \item \textbf{Government and Defense Applications}
-          \begin{itemize}
-              \item In government sectors, biometric authentication is already widely applied, particularly for access to secure facilities and classified information. \citeauthor{Bhatnagar2017} (\citeyear{Bhatnagar2017}) examine the use of biometrics in defense, explaining how biometric PKI could replace or complement existing card-based systems. The Department of Defense in the U.S., for instance, uses multi-biometric systems for personnel access to sensitive locations, balancing ease of access with high-security requirements.
-          \end{itemize}
+          In government sectors, biometric authentication is already widely applied, particularly for access to secure facilities and classified information. \citeauthor{Bhatnagar2017} (\citeyear{Bhatnagar2017}) examine the use of biometrics in defense, explaining how biometric PKI could replace or complement existing card-based systems. The Department of Defense in the U.S., for instance, uses multi-biometric systems for personnel access to sensitive locations, balancing ease of access with high-security requirements.
+
 \end{enumerate}
 
 \section{Conclusion}
@@ -629,6 +607,10 @@ encryption is that it does not require the user to carry any memory device or pa
 function as a private key. When using fuzzy public key encryption, attention should be paid
 to the value of the fuzzy set in the neutral degree, as these unclear points in system access
 allow potential vulnerabilities where hackers could access the system.
+
+\section*{Acknowledgments}
+Acknowledgments section
+
 
 \printbibliography
 \end{document}
